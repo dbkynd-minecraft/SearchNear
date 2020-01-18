@@ -1,0 +1,11 @@
+name: SearchNear
+main: com.dbkynd.SearchNear.SearchNear
+version: "1.0"
+api-version: "1.15"
+author: DBKynd
+depend:
+  - WorldEdit
+commands:
+  search:
+    description: Search for a Item Block within a radius or by selection.
+    usage: /<command>
