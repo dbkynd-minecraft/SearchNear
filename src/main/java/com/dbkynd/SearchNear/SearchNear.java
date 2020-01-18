@@ -121,6 +121,8 @@ public class SearchNear extends JavaPlugin implements Listener {
 
             player.sendMessage(ChatColor.GREEN + "Found: " + amount + ChatColor.GREEN + " matching blocks!");
 
+            if (matches.size() == 0) return true;
+
             if (matches.size() <= 10) {
                 for (Location match : matches) {
                     TextComponent message = new TextComponent(ChatColor.WHITE + "[" + ChatColor.AQUA + match.getBlockX() + ChatColor.WHITE + ", " + ChatColor.AQUA + match.getBlockY() + ChatColor.WHITE + ", " + ChatColor.AQUA + match.getBlockZ() + ChatColor.WHITE + "]");
@@ -130,27 +132,28 @@ public class SearchNear extends JavaPlugin implements Listener {
                     player.spigot().sendMessage(message);
                 }
             } else {
-                if (!getDataFolder().exists()) {
-                    getDataFolder().mkdir();
-                }
-
-                Date date = new Date();
-                String fileName = targetBlock.name() + "_" + Math.floorDiv(date.getTime(), 1000) + ".txt";
-
-                File results = new File(getDataFolder(), fileName);
-
-                try {
-                    results.createNewFile();
-                    FileWriter fr = new FileWriter(results, true);
-                    for (Location match : matches) {
-                        fr.write("/tp " + match.getBlockX() + " " + match.getBlockY() + " " + match.getBlockZ() + "\n");
-                    }
-                    fr.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    player.sendMessage(ChatColor.RED + "Error saving results to file.");
-                }
                 player.sendMessage(ChatColor.GREEN + "Results too lengthy for chat. -> Output to plugin folder.");
+            }
+
+            if (!getDataFolder().exists()) {
+                getDataFolder().mkdir();
+            }
+
+            Date date = new Date();
+            String fileName = targetBlock.name() + "_" + Math.floorDiv(date.getTime(), 1000) + ".txt";
+
+            File results = new File(getDataFolder(), fileName);
+
+            try {
+                results.createNewFile();
+                FileWriter fr = new FileWriter(results, true);
+                for (Location match : matches) {
+                    fr.write("/tp " + match.getBlockX() + " " + match.getBlockY() + " " + match.getBlockZ() + "\n");
+                }
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+                player.sendMessage(ChatColor.RED + "Error saving results to file.");
             }
         }
 

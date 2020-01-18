@@ -1,7 +1,7 @@
 name: SearchNear
 main: com.dbkynd.SearchNear.SearchNear
-version: "1.0"
-api-version: "1.15"
+version: '${project.version}'
+api-version: '1.15'
 author: DBKynd
 depend:
   - WorldEdit
