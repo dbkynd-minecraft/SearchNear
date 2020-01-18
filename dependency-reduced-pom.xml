@@ -5,26 +5,29 @@
   <artifactId>SearchNear</artifactId>
   <version>1.1</version>
   <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>8</source>
+          <target>8</target>
         </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.2.1</version>
         <executions>
           <execution>
             <phase>package</phase>
             <goals>
               <goal>shade</goal>
             </goals>
-            <configuration>
-              <minimizeJar>true</minimizeJar>
-            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -55,4 +58,3 @@
     </dependency>
   </dependencies>
 </project>
-
