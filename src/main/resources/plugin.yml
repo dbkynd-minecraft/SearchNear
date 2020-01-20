@@ -7,5 +7,5 @@ depend:
   - WorldEdit
 commands:
   search:
-    description: Search for a Item Block within a radius or by selection.
+    description: Search for a Item Block within a radius or by WorldEdit selection.
     usage: /<command>

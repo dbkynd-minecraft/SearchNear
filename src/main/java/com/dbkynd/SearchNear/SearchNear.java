@@ -5,6 +5,7 @@ import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.regions.Region;
 import net.md_5.bungee.api.chat.*;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -15,7 +16,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,6 +25,11 @@ import java.util.Date;
 import java.util.List;
 
 public class SearchNear extends JavaPlugin implements Listener {
+
+    @Override
+    public void onEnable() {
+        Metrics metrics = new Metrics(this);
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
